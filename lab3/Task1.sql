@@ -1,5 +1,5 @@
 -- subTASK 1
--- Relational algebra: tau_{country_id}(country)
+-- Relational algebra: tau_{country_id: contry_id > 12 && contry_id < 17}(country)
 -- TABLE:
  CREATE TABLE "contry" (
   "id" SERIAL PRIMARY KEY,
@@ -7,7 +7,7 @@
 );
 -- Query:
 Select country.id from contry
-    order by country.id asc AND (country.id==12 OR country.id==17);
+    order by country.id asc AND (BETWEEN country.id==12 AND country.id==17);
 
     
 -- subTASK 2
