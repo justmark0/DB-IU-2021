@@ -13,4 +13,4 @@ create trigger
 before INSERT
 on customer
 for each row
-set customer.first_name = customer.first_name || "1";
+set customer.first_name = customer.first_name || "1"; -- || mean concatenation
