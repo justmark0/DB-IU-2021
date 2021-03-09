@@ -34,7 +34,7 @@ for rec in records:
     if addr is not None:
         location = geolocator.geocode(addr)
         if location is not None:
-            long, lati = location.latitude, location.longitude
+            long, lati = location.longitude, location.latitude
     if long == 0 and lati == 0 and addr2 is not None:
         location = geolocator.geocode(addr2)
         if location is not None:
