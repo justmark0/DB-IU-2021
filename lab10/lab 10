@@ -1,0 +1,31 @@
+# Mark Nicholson BS19-05
+# Task 1
+For the first 4 steps:
+In the second terminal I has ajones without even commit and when I displayed it in the first one changes was
+not seen bacause they was not commited. I saw changes in second terminal because there was local changes that
+was displayed even without commit.
+When I commited changes of the second terminal changes was seen in the both of the terminals
+
+When I have tryed to update for the first time balance of Alice it is worked. When I am trying to change it in 
+the second terminal the 2-nd terminal is freezing and waiting for some input. I think it is because uncommited
+changes are in the table at this point of time and postgres do not know what to do, so it waits till commit
+will be finished, and only then allow new changes.
+
+For the Repeatable read isolation level: it worked propely. when I am trying to change in changes everything
+exept entryes that was not commited.
+
+# Task 2
+I got similar situation. When I have tryed to update balance +15 for each account that has group_id=2 first
+terminal returned success. But when I've tryed to display the result it returned: "current transaction is
+aborted, commands ignored until end of transaction block". And no changes was applyed. It is because of dirty
+read. Postgres do not know what to so since there is changes from the T2 and T1 trying to change all which
+group_id=2 and T2 adding one of them (exp 1)
+For the Repeatable read isolation level: it worked propely. when I am trying to change in changes everything
+exept entryes that was not commited. Exept at the end T1 commiting T2 rollbacking
+
+# Task 3
+For repeteable read I got the same problem. when I tryed to update in T1 I got error "current transaction is
+aborted, commands ignored until end of transaction block". Then I tryed to display, it gave me same error
+then i commited and it displayed normaly. But balance was not updated.
+For the Serializable isolation: It worked properly. When I update in T1 it updates all values without bbrown
+Because it is not commited and in the other terminal
