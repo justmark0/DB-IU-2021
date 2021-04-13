@@ -1,0 +1,30 @@
+# Task 1
+create (f1:fighter {name: "Khabib Nurmagomedov", weight:"155"}),(f2:fighter {name: "Rafael Dos Anjos", weight:"155"}), (f1)-[:beats]->(f2)
+match (f1:fighter) return f1;
+match (f1:fighter) where f1.name = "Rafael Dos Anjos" 
+create (f2:fighter {name: "Neil Magny", weight: "170"}),
+f3:fighter {name: "Jon Jones", weight: "205"}),
+(f4:fighter {name: "Daniel Cormier", weight: "205"}),
+(f5:fighter {name: "Michael Bisping", weight: "185"}),
+(f6:fighter {name: "Matt Hamill", weight: "185"}),
+(f7:fighter {name: "Brandon Vera", weight: "205"}),
+(f8:fighter {name: "Frank Mir", weight: "230"}),
+(f9:fighter {name: "Brock Lesnar", weight: "205"}),
+(f10:fighter {name: "Kelvin Gastelum", weight: "205"}),
+(f1)-[:beats]-> (f2),
+(f3)-[:beats]-> (f4),
+(f5)-[:beats]-> (f6),
+(f3)-[:beats]-> (f7),
+(f7)-[:beats]-> (f8),
+(f8)-[:beats]-> (f9),
+(f2)-[:beats]-> (f10),
+(f10)-[:beats]-> (f5),
+(f5)-[:beats]-> (f6),
+(f5)-[:beats]-> (f10),
+(f6)-[:beats]-> (f3); 
+
+# Task 2
+1) match (a:fighter)-[:beats]->(b) 
+with a, b, count(b) as cnt
+where a.weight in ["155", "170", "185"] and cnt > 0 return a, count(b);
+
